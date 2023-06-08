@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
+      For a guide and recipes on how to configure / customize this project,<br />
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
@@ -27,16 +27,66 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <button class="button" @click="btnExport()">导出Excel</button>
   </div>
 </template>
 
 <script>
+import { JsonToExcel } from '@/util/excel.js';
+
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+  data() {
+    return {
+      fullscreenLoading: false, //加载中
+      elImport: '', //导入el
+      elExport: '', //导出el
+      errorDialog: false, //错误信息弹窗
+      errorMsg: '', //错误信息内容
+      excelData: [
+        //测试数据
+        { name: '红烧鱼', size: '大', taste: '微辣', price: '40', remain: '100' },
+        { name: '麻辣小龙虾', size: '大', taste: '麻辣', price: '138', remain: '200' },
+        { name: '清蒸小龙虾', size: '大', taste: '清淡', price: '138', remain: '200' },
+      ],
+    };
+  },
+  methods: {
+    //导出
+    btnExport() {
+      const tableField = ['userCode', 'userName', 'department', 'major', 'position'],
+        tableHeader = {
+          userCode: '工号',
+          userName: '姓名',
+          department: '部门',
+          major: '专业',
+          position: '职位/职称',
+        },
+        tableTitle = '导出表格',
+        templateData = [
+          {
+            userCode: 'N1001',
+            userName: '张三',
+            department: '综合管理部',
+            major: '计算机科学与技术',
+            position: '项目经理',
+          },
+        ],
+        obj = {
+          header: tableHeader,
+          data: templateData,
+          key: tableField,
+          title: tableTitle,
+          filename: '团队成员导入模板',
+          autoWidth: true,
+        };
+      JsonToExcel(obj);
+    },
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
