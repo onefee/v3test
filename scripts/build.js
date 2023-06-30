@@ -21,10 +21,13 @@ function setting() {
     // console.log('fs', fs);
     //复制版本号文件
     fs.copyFileSync(fp, 'dist/conf.json');
-    const path = 'dist/favicon.ico';
+    let way = 'dist/favicon.ico';
     //删除ico
-    if (fs.existsSync(path)) fs.unlinkSync(path);
-    ZIP('D:/wrok/pro/demo/vue/test/dist.rar', 'D:/wrok/pro/demo/vue/test/dist/');
+    if (fs.existsSync(way)) fs.unlinkSync(way);
+    way = 'D:/wrok/pro/demo/vue/test/dist.rar';
+    //删除包
+    if (fs.existsSync(way)) fs.unlinkSync(way);
+    ZIP(way, 'D:/wrok/pro/demo/vue/test/dist/');
   }
 }
 /**

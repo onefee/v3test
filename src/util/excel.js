@@ -38,21 +38,12 @@ function json_to_array(key, jsonData) {
 }
 
 /**
- * @param header Object，表头
  * @param data Array，表体数据
  * @param key Array，字段名
- * @param title String，标题（会居中显示），即excel表格第一行
  * @param filename String，文件名
  * @param autoWidth Boolean，是否自动根据key自定义列宽度
  */
-export const JsonToExcel = ({ header, data, key, title, filename, autoWidth }) => {
-  const wb = XLSX.utils.book_new();
-  if (header) {
-    data.unshift(header);
-  }
-  if (title) {
-    data.unshift(title);
-  }
+export const JsonToExcel = ({ data, key, filename, autoWidth, mgs }) => {
   const ws = XLSX.utils.json_to_sheet(data, {
     header: key,
     skipHeader: true,
@@ -61,9 +52,31 @@ export const JsonToExcel = ({ header, data, key, title, filename, autoWidth }) =
     const arr = json_to_array(key, data);
     auto_width(ws, arr);
   }
+  if (mgs) {
+    ws['!merges'] = mgs;
+  } else {
+    ws['!merges'] = [XLSX.utils.decode_range('A1:E1')];
+  }
+  console.debug('ws', ws, ws['A2']);
+  if (ws['A2']) {
+    ws['A2'].s = {
+      alignment: {
+        horizontal: 'center',
+      },
+      font: {
+        sz: 12,
+        bold: true,
+        color: {
+          rgb: '3bc117',
+        },
+      },
+    };
+  }
+  const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, filename);
   XLSX.writeFile(wb, filename + '.xlsx');
 };
+
 export default {
   JsonToExcel,
 };

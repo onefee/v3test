@@ -1,0 +1,24 @@
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+#app {
+  text-align: center;
+  color: #2c3e50;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  color: #42b983;
+}
+nav {
+  padding: 30px;
+}
+nav a {
+  font-weight: bold;
+}
+

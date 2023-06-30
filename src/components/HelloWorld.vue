@@ -41,11 +41,6 @@ export default {
   },
   data() {
     return {
-      fullscreenLoading: false, //加载中
-      elImport: '', //导入el
-      elExport: '', //导出el
-      errorDialog: false, //错误信息弹窗
-      errorMsg: '', //错误信息内容
       excelData: [
         //测试数据
         { name: '红烧鱼', size: '大', taste: '微辣', price: '40', remain: '100' },
@@ -57,16 +52,18 @@ export default {
   methods: {
     //导出
     btnExport() {
-      const tableField = ['userCode', 'userName', 'department', 'major', 'position'],
-        tableHeader = {
-          userCode: '工号',
-          userName: '姓名',
-          department: '部门',
-          major: '专业',
-          position: '职位/职称',
-        },
-        tableTitle = '导出表格',
-        templateData = [
+      const field = ['userCode', 'userName', 'department', 'major', 'position'],
+        dt = [
+          {
+            userCode: '合并居中',
+          },
+          {
+            userCode: '工号',
+            userName: '姓名',
+            department: '部门',
+            major: '专业',
+            position: '职位/职称',
+          },
           {
             userCode: 'N1001',
             userName: '张三',
@@ -76,11 +73,9 @@ export default {
           },
         ],
         obj = {
-          header: tableHeader,
-          data: templateData,
-          key: tableField,
-          title: tableTitle,
-          filename: '团队成员导入模板',
+          data: dt,
+          key: field,
+          filename: '导出示例',
           autoWidth: true,
         };
       JsonToExcel(obj);
@@ -94,15 +89,8 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>
