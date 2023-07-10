@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <button class="button" @click="btnExport()">导出Excel</button>
-  </div>
+  <div class="home"></div>
 </template>
 
 <script>

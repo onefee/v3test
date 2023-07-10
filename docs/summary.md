@@ -77,6 +77,23 @@ css盒模型是前端开发中非常基础和重要的知识，它是元素大�
  [requestAnimationFrame](https://blog.csdn.net/weixin_44730897/article/details/116532510)，
  [Performance API](https://developer.mozilla.org/zh-CN/docs/Web/API/Performance)，
  [火狐内置分析器](https://profiler.firefox.com/docs/#/./guide-getting-started)， 
+ 
+ [CSS媒体查询](https://www.runoob.com/cssref/css3-pr-mediaquery.html)， [W3媒体查询](https://www.w3school.com.cn/css/css3_mediaqueries_ex.asp)，
+ 
+ JS对性能的负面影响更大，
+但并非所有下载的字节都有相同的影响，JS文件必须被下载、解析和执行。
+JS会影响下载性能，我们应该尽量减少对下载的影响，JS也会消耗主线程、CPU 和电池，它会让UI反应迟钝或卡顿。
+
+ Web应用程序包含大量JS，许多应用程序都是使用一个或多个JS框架构建的，并具有一些额外的依赖项，通常会添加第三方脚本和API，包括 A/B 测试、跟踪像素以及地图和支持功能等功能。
+所有这些JS都必须下载。
+
+ 性能优化应包括：
+ 减少所需的JS数量；简化代码(复杂的功能由简单代码实现)；抽象管理公共库；采用更轻的量或自写JS库；删除未使用的代码；
+将JS分割成更小的文件；将JS代码拆分为关键部分和非关键部分；像webpack这样的模块打包器支持代码分割；优化这些较小的文件；
+压缩JS文件；Gzipping会进一步压缩文件，即使不缩小也应该使用Brotli与Gzip类似，通常优于Gzip的压缩。
+
+ Web应用程序包含大量JS。许多应用程序都是使用一个或多个JS框架构建的，并具有一些额外的依赖项。通常会添加第三方脚本和API包括 A/B测试、跟踪像素以及地图和支持功能等功能
+
 - **设计模式** 
  单例模式、策略模式、代理模式、迭代器模式、发布—订阅模式、命令模式、组合模式、模板方法模式、享元模式、职责链模式、中介者模式、装饰者模式、状态模式、适配器模式、外观模式
  
@@ -84,3 +101,12 @@ css盒模型是前端开发中非常基础和重要的知识，它是元素大�
  [23种设计模式总结](https://blog.csdn.net/lgxzzz/article/details/124970034)， 
 - **WebAssembly** 
  [参考详解](https://developer.mozilla.org/zh-CN/docs/WebAssembly)
+ 
+- **Vue3** 
+ [参考详解](https://cn.vuejs.org/)，[API](https://cn.vuejs.org/api/)
+ 
+ [性能优化](https://cn.vuejs.org/guide/best-practices/performance.html)
+ 
+ 内置组件：[Transition](https://cn.vuejs.org/guide/built-ins/transition.html)、[TransitionGroup](https://cn.vuejs.org/guide/built-ins/transition-group.html)、[KeepAlive](https://cn.vuejs.org/guide/built-ins/keep-alive.html)、[Teleport](https://cn.vuejs.org/guide/built-ins/teleport.html)、[Suspense](https://cn.vuejs.org/guide/built-ins/suspense.html)
+
+ 

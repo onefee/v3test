@@ -57,7 +57,7 @@ export const JsonToExcel = ({ data, key, filename, autoWidth, mgs }) => {
   } else {
     ws['!merges'] = [XLSX.utils.decode_range('A1:E1')];
   }
-  console.debug('ws', ws, ws['A2']);
+  // console.debug('ws', ws, ws['A2']);
   if (ws['A2']) {
     ws['A2'].s = {
       alignment: {
